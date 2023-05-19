@@ -1,7 +1,4 @@
 CC=gcc
-SRCFILE=src
-USERSFILE=.users
-OBJ
 OBJ:= obj/new.o obj/passpal.o
 
 obj/%.o: src/%.c
@@ -13,7 +10,5 @@ build: $(OBJ)
 exec:
 	./bin/passpal.exe
 
-full_reset:
-	rm -f bin/passpal.exe
-	rm -rf $(USERSFILE)/*
-	rm -rf $(OBJFILE)/*
+full_reset: $(OBJ) 
+	rm -f bin/passpal.exe .users/* obj/*
