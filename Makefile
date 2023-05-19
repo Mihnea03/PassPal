@@ -4,6 +4,9 @@ OBJ:= obj/new.o obj/passpal.o
 obj/%.o: src/%.c
 	$(CC) -c -o $@ $<
 
+init:
+	mkdir .users bin
+
 build: $(OBJ)
 	$(CC) -Wall -g -o bin/passpal.exe $^
 
