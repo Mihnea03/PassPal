@@ -14,10 +14,6 @@ void print_main_menu() {
     printf("Type 'q' to quit the program...\n\n");
 }
 
-void sub_menu() {
-
-}
-
 int main() {
     char input = 0;
     clear();
@@ -33,7 +29,6 @@ int main() {
         switch (input) {
             case '1': {
                 user* user = log_in(user_name, password);
-                sub_menu();
                 break;
             }
             case '2': {
