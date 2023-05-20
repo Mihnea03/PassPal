@@ -1,6 +1,6 @@
 #include "utils.h"
 
-void log_in() {
+void log_in(char* user_name, char* password) {
 
 }
 
@@ -17,5 +17,5 @@ void reactivate() {
 }
 
 void delete() {
-    
+
 }
