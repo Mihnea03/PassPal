@@ -26,7 +26,9 @@ int main() {
 
         switch (input) {
             case '1': {
-                log_in();
+                char* user_name = malloc(MAX_USERNAME);
+                char* password = malloc(MAX_PASSWORD);
+                log_in(user_name, password);
                 break;
             }
             case '2': {

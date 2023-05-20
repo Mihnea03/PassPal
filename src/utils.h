@@ -20,3 +20,6 @@ typedef struct usr {
     bool is_active;
     password* passwords;
 } user;
+
+// User Operations
+void log_in(char* user_name, char* password);
