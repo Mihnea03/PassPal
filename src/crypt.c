@@ -22,7 +22,10 @@ static char* encrypt_password(unsigned char* password) {
     int C = 0xfedcba98;
     int D = 0x76543210;
 
-    
+    for (int i = 0; i < 15; i++) {
+        int* m = (int*) (encrypted_pass + 4 * i);
+        int proc = B + C + D;
+    }    
 
     return encrypted_pass;
 }
