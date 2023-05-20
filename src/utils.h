@@ -5,7 +5,7 @@
 #include <sys/stat.h>
 
 #define MAX_USERNAME 16
-#define MAX_PASSWORD 20
+#define MAX_PASSWORD 32
 
 typedef struct pass {
     char* url;

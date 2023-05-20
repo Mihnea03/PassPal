@@ -18,7 +18,7 @@ int main() {
     char input = 0;
     clear();
 
-    printf("%d", 1 << 7);
+    printf("%s", encrypt("SUGI"));
 
     while (input != 'q') {
         print_main_menu();
