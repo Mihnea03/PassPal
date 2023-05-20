@@ -32,19 +32,19 @@ int main() {
                 break;
             }
             case '2': {
-                sign_up();
+        
                 break;
             }
             case '3': {
-                deactivate();
+            
                 break;
             }
             case '4': {
-                reactivate();
+        
                 break;
             }
             case '5': {
-                delete();
+            
                 break;
             }
         }
