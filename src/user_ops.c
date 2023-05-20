@@ -1,6 +1,6 @@
 #include "utils.h"
 
-void log_in(char* user_name, char* password) {
+int log_in(char* user_name, char* password) {
 
 }
 

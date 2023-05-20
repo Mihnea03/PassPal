@@ -12,6 +12,9 @@ void print_main_menu() {
     printf("\n");
 
     printf("Type 'q' to quit the program...\n\n");
+}
+
+void sub_menu() {
 
 }
 
@@ -28,7 +31,8 @@ int main() {
             case '1': {
                 char* user_name = malloc(MAX_USERNAME);
                 char* password = malloc(MAX_PASSWORD);
-                log_in(user_name, password);
+                pass_list passwords = log_in(user_name, password);
+                sub_menu();
                 break;
             }
             case '2': {

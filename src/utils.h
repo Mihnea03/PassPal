@@ -14,7 +14,6 @@ typedef struct pass {
 } password, *pass_list;
 
 typedef struct usr {
-    char* uid;
     char* user_name;
     char* hashed_password;
     bool is_active;
@@ -22,8 +21,8 @@ typedef struct usr {
 } user;
 
 // User Operations
-void log_in(char* user_name, char* password);
+pass_list log_in(char* user_name, char* password);
 void sign_up(char* user_name, char* password);
-void deactivate(char* user_name, char* password)
-void reactivate(char* user_name, char* password)
+void deactivate(char* user_name, char* password);
+void reactivate(char* user_name, char* password);
 void delete(char* user_name, char* password);
