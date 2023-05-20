@@ -7,7 +7,7 @@ obj/%.o: src/%.c
 build: $(OBJ)
 	$(CC) -Wall -g -o bin/passpal.exe $^
 
-exec:
+run:
 	./bin/passpal.exe
 
 clean: $(OBJ) 
