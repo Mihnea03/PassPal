@@ -17,11 +17,36 @@ void print_main_menu() {
 
 int main() {
     char input = 0;
+    clear();
 
     while (input != 'q') {
-        clear();
         print_main_menu();
         scanf("%c", &input);
+        printf("%c", input);
+
+        switch (input) {
+            case '1': {
+                log_in();
+                break;
+            }
+            case '2': {
+                sign_up();
+                break;
+            }
+            case '3': {
+                deactivate();
+                break;
+            }
+            case '4': {
+                reactivate();
+                break;
+            }
+            case '5': {
+                delete();
+                break;
+            }
+        }
+        // clear();
     }
     return 0;
 }
