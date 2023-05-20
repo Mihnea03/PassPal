@@ -28,27 +28,28 @@ int main() {
         printf("%c", input);
 
         switch (input) {
+            char* user_name = malloc(MAX_USERNAME);
+            char* password = malloc(MAX_PASSWORD);
+
             case '1': {
-                char* user_name = malloc(MAX_USERNAME);
-                char* password = malloc(MAX_PASSWORD);
-                pass_list passwords = log_in(user_name, password);
+                user* user = log_in(user_name, password);
                 sub_menu();
                 break;
             }
             case '2': {
-        
+                user* user = sign_up(user_name, password);
                 break;
             }
             case '3': {
-            
+                deactivate(user_name, password);
                 break;
             }
             case '4': {
-        
+                reactivate(user_name, password);
                 break;
             }
             case '5': {
-            
+                delete(user_name, password);
                 break;
             }
         }

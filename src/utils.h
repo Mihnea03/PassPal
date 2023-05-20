@@ -21,8 +21,8 @@ typedef struct usr {
 } user;
 
 // User Operations
-pass_list log_in(char* user_name, char* password);
-void sign_up(char* user_name, char* password);
+user* log_in(char* user_name, char* password);
+user* sign_up(char* user_name, char* password);
 void deactivate(char* user_name, char* password);
 void reactivate(char* user_name, char* password);
 void delete(char* user_name, char* password);
