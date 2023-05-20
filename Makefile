@@ -10,5 +10,5 @@ build: $(OBJ)
 exec:
 	./bin/passpal.exe
 
-full_reset: $(OBJ) 
+clean: $(OBJ) 
 	rm -f bin/passpal.exe .users/* obj/*
