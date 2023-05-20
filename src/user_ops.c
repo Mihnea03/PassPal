@@ -1,10 +1,10 @@
 #include "utils.h"
 
-int log_in(char* user_name, char* password) {
+user* log_in(char* user_name, char* password) {
 
 }
 
-void sign_up(char* user_name, char* password) {
+user* sign_up(char* user_name, char* password) {
 
 }
 
