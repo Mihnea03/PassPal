@@ -1,5 +1,5 @@
 CC=gcc
-OBJ:= obj/new.o obj/passpal.o
+OBJ:= obj/passpal.o
 
 obj/%.o: src/%.c
 	$(CC) -c -o $@ $<
