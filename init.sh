@@ -4,11 +4,28 @@ OBJ=obj
 BIN=bin
 USR=.users
 
-echo -n "Initializing project..."
+echo -e "Initializing project..."
 
-if [ -d "$OBJ"]
+if [ -d "$OBJ" ]
 then
-    echo -n "Object file already exists!"
+    echo -e "Object folder already exists!"
 else
+    echo -e "Created object folder!"
     mkdir $OBJ
+fi
+
+if [ -d "$BIN" ]
+then
+    echo -e "Binary folder already exists!"
+else
+    echo -e "Created binary folder!"
+    mkdir $BIN
+fi
+
+if [ -d "$USR" ]
+then
+    echo -e "Users folder already exists!"
+else
+    echo -e "Created users folder!"
+    mkdir $USR
 fi
