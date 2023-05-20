@@ -27,10 +27,10 @@ int main() {
         scanf("%c", &input);
         printf("%c", input);
 
-        switch (input) {
-            char* user_name = malloc(MAX_USERNAME);
-            char* password = malloc(MAX_PASSWORD);
+        char* user_name = malloc(MAX_USERNAME);
+        char* password = malloc(MAX_PASSWORD);
 
+        switch (input) {
             case '1': {
                 user* user = log_in(user_name, password);
                 sub_menu();
