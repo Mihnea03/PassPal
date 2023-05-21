@@ -9,7 +9,11 @@ static char* encrypt_password(unsigned char* password) {
         char first = password[i] & first_part_mask;
         char second = password[i] >> 4;
 
-        first *= 
+        first *= i * 17;
+        second *= i * 8;
+
+        encrypted_pass[i] = first;
+        encrypted_pass[i + 1] = second;
     }
 
     return encrypted_pass;
