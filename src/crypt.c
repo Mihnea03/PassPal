@@ -1,24 +1,27 @@
 #include "utils.h"
 
-static char* encrypt_password(unsigned char* password) {
+static void encrypt_password(unsigned char* password, const char* key, unsigned char* encrypted_password) {
     int length = strlen(password);
-    unsigned char* encrypted_pass = calloc(2 * length, 1);
 
-    char first_part_mask = 15; // 0000 1111
     for (int i = 0; i < length; i++) {
-        char first = password[i] & first_part_mask;
-        char second = password[i] >> 4;
+        unsigned char curr = password[i];
+        unsigned char curr_key = key[i];
 
-        first *= i * 17;
-        second *= i * 8;
 
-        encrypted_pass[i] = first;
-        encrypted_pass[i + 1] = second;
+        curr = (curr ^ curr_key) + (curr << 3);
+        curr = (curr ^ (curr_key + 2)) ^ (curr >> 2);
+        curr = (curr ^ (curr_key + 1)) + (curr << 1);
+
+        curr = (curr % 95) + 32;
+        printf("%c\n", curr);
+
+        encrypted_password[i] = curr;
     }
-
-    return encrypted_pass;
+    encrypted_password[length] = '\0';
 }
 
-char* encrypt(char* password) {
-    return encrypt_password(password);
+char* encrypt(char* password, char* key) {
+    char* encrypted_password = malloc(strlen(password) + 1);
+    encrypt_password(password, key, encrypted_password);
+    return encrypted_password;
 }

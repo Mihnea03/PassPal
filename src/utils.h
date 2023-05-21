@@ -5,7 +5,7 @@
 #include <sys/stat.h>
 
 #define MAX_USERNAME 20
-#define MAX_PASSWORD 16
+#define MAX_PASSWORD 32
 
 typedef struct pass {
     char* url;
@@ -28,4 +28,4 @@ void reactivate(char* user_name, char* password);
 void delete(char* user_name, char* password);
 
 // Crypting
-char* encrypt(char* password);
+char* encrypt(char* password, char* key);

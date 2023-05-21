@@ -28,4 +28,5 @@ then
 else
     echo -e "Created users folder!"
     mkdir $USR
+    chmod 700 $USR
 fi

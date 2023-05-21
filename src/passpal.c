@@ -18,8 +18,6 @@ int main() {
     char input = 0;
     clear();
 
-    printf("%s", encrypt("SUGI"));
-
     while (input != 'q') {
         print_main_menu();
         scanf("%c", &input);
