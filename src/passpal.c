@@ -15,7 +15,7 @@ void print_main_menu() {
 }
 
 int main() {
-    char input = 0;
+    unsigned char input = 0;
     clear();
 
     while (input != 'q') {
@@ -23,8 +23,8 @@ int main() {
         scanf("%c", &input);
         printf("%c", input);
 
-        char* user_name = malloc(MAX_USERNAME);
-        char* password = malloc(MAX_PASSWORD);
+        unsigned char* user_name = malloc(MAX_USERNAME);
+        unsigned char* password = malloc(MAX_PASSWORD);
 
         switch (input) {
             case '1': {

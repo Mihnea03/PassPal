@@ -1,21 +1,21 @@
 #include "utils.h"
 
-user* log_in(char* user_name, char* password) {
+user* log_in(unsigned char* user_name, unsigned char* password) {
 
 }
 
-user* sign_up(char* user_name, char* password) {
+user* sign_up(unsigned char* user_name, unsigned char* password) {
 
 }
 
-void deactivate(char* user_name, char* password) {
+void deactivate(unsigned char* user_name, unsigned char* password) {
 
 }
 
-void reactivate(char* user_name, char* password) {
+void reactivate(unsigned char* user_name, unsigned char* password) {
 
 }
 
-void delete(char* user_name, char* password) {
+void delete(unsigned char* user_name, unsigned char* password) {
 
 }
