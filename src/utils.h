@@ -31,3 +31,4 @@ void delete(unsigned char* user_name, unsigned char* password);
 // Crypting
 unsigned char* encrypt(unsigned char* password, unsigned char* key);
 bool validate_pass(unsigned char* password);
+unsigned char* create_unique_key(int length);
