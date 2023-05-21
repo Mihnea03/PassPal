@@ -31,7 +31,10 @@ bool validate_pass(unsigned char* password) {
     const char SYMBOLS[] = "~`!@#$%^&*()_-+=|\\}]{[\"':;?/>.<,";
 
     if (strlen(password) < MIN_PASSWORD) {
-        printf("Password needs to be at least 8 characters long!\n");
+        printf("Your password needs to be at least %d characters long!\n", MIN_PASSWORD);
+        return false;
+    } else if (strlen(password) > MAX_PASSWORD) {
+        printf("Your Password needs to have a length of maximum %d characters!\n", MAX_PASSWORD);
         return false;
     }
 
@@ -44,6 +47,10 @@ bool validate_pass(unsigned char* password) {
             number = true;
         if (strchr(SYMBOLS, password[i]))
             symbol = true;
+        if (password[i] == ' ') {
+            printf("Your password cannot contain spaces!\n");
+            return false;
+        }
     }
 
     if (lower == true && higher == true && number == true && symbol == true)
@@ -57,4 +64,10 @@ bool validate_pass(unsigned char* password) {
         printf("Your password needs to contain at least one digit!\n");
     if (symbol == false)
         printf("Your password needs to contain at least one symbol!\n");
+    
+    return false;
+}
+
+unsigned char* create_unique_key(int length) {
+    
 }
