@@ -2,30 +2,15 @@
 
 static char* encrypt_password(unsigned char* password) {
     int length = strlen(password);
-    unsigned char* encrypted_pass = calloc(64, 1);
-    for (int i = 0; i < length; i++)
-        encrypted_pass[i] = password[i];
-    encrypted_pass[length] = 1 << 7;
+    unsigned char* encrypted_pass = calloc(2 * length, 1);
 
-    unsigned int bitmask = 1 << 31;
-    for (int i = 0; i < 32; i++) {
-        int curr_bit = length & bitmask;
-        if (curr_bit) {
-            encrypted_pass[60 + i / 8] |= bitmask;
-        }
-        bitmask >>= 1;
+    char first_part_mask = 15; // 0000 1111
+    for (int i = 0; i < length; i++) {
+        char first = password[i] & first_part_mask;
+        char second = password[i] >> 4;
+
+        first *= 
     }
-
-    // Buffers
-    int A = 0x01234567;
-    int B = 0x89abcdef;
-    int C = 0xfedcba98;
-    int D = 0x76543210;
-
-    for (int i = 0; i < 15; i++) {
-        int* m = (int*) (encrypted_pass + 4 * i);
-        int proc = B + C + D;
-    }    
 
     return encrypted_pass;
 }
