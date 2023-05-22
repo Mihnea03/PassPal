@@ -39,3 +39,5 @@ unsigned char* create_unique_key(int length);
 bool validate_username(unsigned char* username);
 
 // Initializations and frees
+pass_list init_pass_list();
+void add_pass(pass_list list, char* password, char* url);
