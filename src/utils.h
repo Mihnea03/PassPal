@@ -8,6 +8,7 @@
 #define MIN_USERNAME 6
 #define MAX_PASSWORD 20
 #define MIN_PASSWORD 8
+#define TRIES 5
 
 typedef struct pass {
     unsigned char* url;

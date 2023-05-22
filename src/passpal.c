@@ -28,6 +28,24 @@ int main() {
 
         switch (input) {
             case '1': {
+                bool valid_usr;
+                int tries = 0;
+                printf("Enter username: ");
+                do {
+                    if (tries == TRIES) {
+                        printf("Too many tries! Canceling operation...\n");
+                        break;
+                    }
+                    scanf("%s", user_name);
+                    valid_usr = validate_username(user_name);
+                    if (valid_usr == false && tries + 1 != TRIES) {
+                        printf("Re-enter username: ");
+                        tries++;
+                    }
+                    if (valid_usr == false && tries + 1 == TRIES) {
+                        tries++;
+                    }
+                } while(valid_usr == false);
                 user* user = log_in(user_name, password);
                 break;
             }
@@ -48,7 +66,6 @@ int main() {
                 break;
             }
         }
-        clear();
     }
     return 0;
 }
