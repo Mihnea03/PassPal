@@ -21,7 +21,6 @@ int main() {
     while (input != 'q') {
         print_main_menu();
         scanf("%c", &input);
-        printf("%c", input);
 
         unsigned char* user_name = malloc(MAX_USERNAME);
         unsigned char* password = malloc(MAX_PASSWORD);

@@ -69,5 +69,14 @@ bool validate_pass(unsigned char* password) {
 }
 
 unsigned char* create_unique_key(int length) {
-    
+    char left = 48, right = 122;
+    char interval_len = right - left;
+    unsigned char* key = malloc(length);
+
+    for (int i = 0; i < length; i++) {
+        unsigned char rand_char = rand() % interval_len + left;
+        key[i] = rand_char;
+    }
+    key[length] = '\0';
+    return key;
 }
