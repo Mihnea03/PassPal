@@ -14,6 +14,12 @@ void print_main_menu() {
     printf("Type 'q' to quit the program...\n\n");
 }
 
+void await_exit(char* input) {
+    printf("Type anything to continue... ");
+    scanf("%c", input);
+    clear();
+}
+
 int main() {
     unsigned char input = 0;
     clear();
@@ -32,17 +38,15 @@ int main() {
                 int tries = 0;
                 printf("Enter username: ");
                 do {
-                    if (tries == TRIES) {
-                        printf("Too many tries! Canceling operation...\n");
-                        break;
-                    }
                     scanf("%s", user_name);
                     valid_usr = validate_username(user_name);
-                    if (valid_usr == false && tries + 1 != TRIES) {
-                        printf("Re-enter username: ");
-                        tries++;
+                    if (valid_usr == false && tries == TRIES) {
+                        printf("Too many attempts, canceling operation...\n\n");
+                        await_exit(&input);
+                        break;
                     }
-                    if (valid_usr == false && tries + 1 == TRIES) {
+                    if (valid_usr == false && tries != TRIES) {
+                        printf("Re-enter username: ");
                         tries++;
                     }
                 } while(valid_usr == false);
