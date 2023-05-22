@@ -17,6 +17,8 @@ void print_main_menu() {
 int main() {
     unsigned char input = 0;
     clear();
+
+    validate_username("haicadak");
     // while (input != 'q') {
     //     print_main_menu();
     //     scanf("%c", &input);

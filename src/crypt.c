@@ -83,10 +83,10 @@ unsigned char* create_unique_key(int length) {
 
 bool validate_username(unsigned char* username) {
     if (strlen(username) < MIN_PASSWORD) {
-        printf("Your username should be bigger than %d characters!\n", MIN_PASSWORD);
+        printf("Your username should be bigger than %d characters!\n", MIN_USERNAME);
         return false;
     } else if (strlen(username) > MAX_PASSWORD) {
-        printf("Your username should be shorter than %d characters!\n", MAX_PASSWORD);
+        printf("Your username should be shorter than %d characters!\n", MAX_USERNAME);
         return false;
     }
     for (int i = 0; i < strlen(username); i++) {
