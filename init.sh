@@ -28,5 +28,6 @@ then
 else
     echo -e "Created users folder!"
     mkdir $USR
+    touch $USR/.user_meta
     chmod 700 $USR
 fi
