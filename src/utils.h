@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <sys/stat.h>
+#include <unistd.h>
 
 #define MAX_USERNAME 16
 #define MIN_USERNAME 6
