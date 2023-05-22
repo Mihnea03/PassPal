@@ -4,8 +4,9 @@
 #include <stdbool.h>
 #include <sys/stat.h>
 
-#define MAX_USERNAME 20
-#define MAX_PASSWORD 32
+#define MAX_USERNAME 16
+#define MIN_USERNAME 6
+#define MAX_PASSWORD 20
 #define MIN_PASSWORD 8
 
 typedef struct pass {
@@ -32,3 +33,4 @@ void delete(unsigned char* user_name, unsigned char* password);
 unsigned char* encrypt(unsigned char* password, unsigned char* key);
 bool validate_pass(unsigned char* password);
 unsigned char* create_unique_key(int length);
+bool validate_username(unsigned char* username);

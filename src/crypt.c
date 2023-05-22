@@ -80,3 +80,20 @@ unsigned char* create_unique_key(int length) {
     key[length] = '\0';
     return key;
 }
+
+bool validate_username(unsigned char* username) {
+    if (strlen(username) < MIN_PASSWORD) {
+        printf("Your username should be bigger than %d characters!\n", MIN_PASSWORD);
+        return false;
+    } else if (strlen(username) > MAX_PASSWORD) {
+        printf("Your username should be shorter than %d characters!\n", MAX_PASSWORD);
+        return false;
+    }
+    for (int i = 0; i < strlen(username); i++) {
+        if ((username[i] < '0' || username[i] > '9') && (username[i] < 'a' || username[i] > 'z') || (username[i] < 'A' && username[i] > 'Z')) {
+            printf("Your username should only contain digits, lowercase and uppercase letters!\n");
+            return false;
+        }
+    }
+    return true;
+}
