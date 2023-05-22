@@ -18,7 +18,7 @@ int main() {
     unsigned char input = 0;
     clear();
 
-    validate_username("haicadak");
+    validate_username("111111111111111111");
     // while (input != 'q') {
     //     print_main_menu();
     //     scanf("%c", &input);

@@ -82,15 +82,15 @@ unsigned char* create_unique_key(int length) {
 }
 
 bool validate_username(unsigned char* username) {
-    if (strlen(username) < MIN_PASSWORD) {
+    if (strlen(username) < MIN_USERNAME) {
         printf("Your username should be bigger than %d characters!\n", MIN_USERNAME);
         return false;
-    } else if (strlen(username) > MAX_PASSWORD) {
+    } else if (strlen(username) > MAX_USERNAME) {
         printf("Your username should be shorter than %d characters!\n", MAX_USERNAME);
         return false;
     }
     for (int i = 0; i < strlen(username); i++) {
-        if ((username[i] < '0' || username[i] > '9') && (username[i] < 'a' || username[i] > 'z') || (username[i] < 'A' && username[i] > 'Z')) {
+        if ((username[i] < '0' || username[i] > '9') && (username[i] < 'a' || username[i] > 'z') && (username[i] < 'A' || username[i] > 'Z')) {
             printf("Your username should only contain digits, lowercase and uppercase letters!\n");
             return false;
         }
