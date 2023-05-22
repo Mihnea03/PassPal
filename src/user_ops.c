@@ -35,7 +35,7 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
         return NULL;
     }
 
-    
+    // TODO: implement allocing user and passwords 
 }
 
 user* sign_up(unsigned char* user_name, unsigned char* password) {
