@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+#define USER_META ".users/user_meta"
+
 #define MAX_USERNAME 16
 #define MIN_USERNAME 6
 #define MAX_PASSWORD 20
