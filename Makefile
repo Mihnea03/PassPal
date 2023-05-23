@@ -10,5 +10,10 @@ build: $(OBJ)
 run:
 	./bin/passpal
 
-clean: $(OBJ) 
+clean: 
 	rm -f bin/passpal .users/* obj/*
+
+full_clean:
+	make clean
+	rm .users/.user_meta
+	touch .users/.user_meta

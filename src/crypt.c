@@ -25,6 +25,20 @@ unsigned char* encrypt(unsigned char* password, unsigned char* key) {
     return encrypted_password;
 }
 
+unsigned char* create_unique_key(int length) {
+    srand(time(NULL));
+    char left = 48, right = 122;
+    char interval_len = right - left;
+    unsigned char* key = malloc(length);
+
+    for (int i = 0; i < length; i++) {
+        unsigned char rand_char = rand() % interval_len + left;
+        key[i] = rand_char;
+    }
+    key[length] = '\0';
+    return key;
+}
+
 bool validate_pass(unsigned char* password) {
     bool is_valid = false;
     bool lower = false, higher = false, number = false, symbol = false;
@@ -66,19 +80,6 @@ bool validate_pass(unsigned char* password) {
         printf("Your password needs to contain at least one symbol!\n");
     
     return false;
-}
-
-unsigned char* create_unique_key(int length) {
-    char left = 48, right = 122;
-    char interval_len = right - left;
-    unsigned char* key = malloc(length);
-
-    for (int i = 0; i < length; i++) {
-        unsigned char rand_char = rand() % interval_len + left;
-        key[i] = rand_char;
-    }
-    key[length] = '\0';
-    return key;
 }
 
 bool validate_username(unsigned char* username) {
