@@ -12,6 +12,9 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
         fscanf(meta, "%s", name);
         fscanf(meta, "%s", encrypted_pass);
 
+        printf("%s\n", name);
+        printf("%s", encrypted_pass);
+        
         if (strcmp(name, user_name) == 0) {
             ok = true;
             break;
@@ -35,7 +38,9 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
         return NULL;
     }
 
-    // TODO: implement allocing user and passwords 
+    user* logged_in = init_user(1);
+
+    // TODO: complete user info 
 }
 
 user* sign_up(unsigned char* user_name, unsigned char* password) {

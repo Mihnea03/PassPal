@@ -14,6 +14,49 @@ void print_main_menu() {
     printf("Type 'q' to quit the program...\n\n");
 }
 
+bool validate_login_info(unsigned char* user_name, unsigned char* password) {
+    bool valid_usr;
+    int tries = 1;
+    printf("Enter username: ");
+    do {
+        scanf("%s", user_name);
+        valid_usr = validate_username(user_name);
+        if (valid_usr == false && tries == TRIES) {
+            printf("\nToo many attempts, canceling operation...\n");
+            sleep(1);
+            clear();
+            return false;
+        }
+        if (valid_usr == false && tries != TRIES) {
+            printf("Re-enter username: ");
+            tries++;
+        }
+    } while(valid_usr == false);
+
+    if (valid_usr == false)
+        return false;
+
+    bool valid_pass;
+    tries = 1;
+    printf("Enter password: ");
+    do {
+        scanf("%s", password);
+        valid_pass = validate_pass(password);
+        if (valid_pass == false && tries == TRIES) {
+            printf("\nToo many attempts, canceling operation...\n");
+            sleep(1);
+            clear();
+            return false;
+        }
+        if (valid_pass == false && tries != TRIES) {
+            printf("Re-enter password: ");
+            tries++;
+        }
+    } while(valid_pass == false);
+
+    return true;
+}
+
 int main() {
     unsigned char input = 0;
     clear();
@@ -28,24 +71,8 @@ int main() {
 
         switch (input) {
             case '1': {
-                bool valid_usr;
-                int tries = 1;
-                printf("Enter username: ");
-                do {
-                    scanf("%s", user_name);
-                    valid_usr = validate_username(user_name);
-                    if (valid_usr == false && tries == TRIES) {
-                        printf("\nToo many attempts, canceling operation...\n");
-                        sleep(1);
-                        clear();
-                        break;
-                    }
-                    if (valid_usr == false && tries != TRIES) {
-                        printf("Re-enter username: ");
-                        tries++;
-                    }
-                } while(valid_usr == false);
-
+                if (validate_login_info(user_name, password) == false)
+                    break;
                 user* user = log_in(user_name, password);
                 break;
             }

@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-#define USER_META ".users/user_meta"
+#define USER_META ".users/.user_meta"
 
 #define MAX_USERNAME 16
 #define MIN_USERNAME 6
