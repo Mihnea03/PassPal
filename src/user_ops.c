@@ -22,6 +22,7 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
 
     if (ok == false) {
         printf("User with the name %s cannot be found!\n", user_name);
+        sleep(1);
         return NULL;
     }
 
@@ -36,15 +37,15 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
 
     if (strlen(password) != strlen(key)) {
         printf("The password is not correct!\n");
+        sleep(1);
         return NULL;
     }
 
     char* encrypt_curr = encrypt(password, key);
 
-    printf("%s\n%s", encrypted_pass, encrypt_curr);
-
     if (strcmp(encrypt_curr, encrypted_pass)) {
         printf("The password is not correct!\n");
+        sleep(1);
         return NULL;
     }
 
@@ -52,11 +53,29 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
 
     user* user = init_user(user_name, key);
     printf("You have logged in as %s\n", user_name);
+    sleep(1);
     return user;
 }
 
 user* sign_up(unsigned char* user_name, unsigned char* password) {
-    FILE* meta = fopen(USER_META, "at");
+    FILE* meta = fopen(USER_META, "rt");
+
+    unsigned char* name = malloc(MAX_USERNAME);
+    unsigned char* pass = malloc(MAX_PASSWORD);
+
+    while(!feof(meta)) {
+        fscanf(meta, "%s", name);
+        fscanf(meta, "%s", pass);
+
+        if (strcmp(name, user_name) == 0) {
+            printf("Username already exists!\n");
+            sleep(1);
+            return NULL;
+        }
+    }
+    fclose(meta);
+
+    meta = fopen(USER_META, "at");
 
     unsigned char* key = create_unique_key(strlen(password));
     unsigned char* encrypted_pass = encrypt(password, key);
@@ -74,6 +93,7 @@ user* sign_up(unsigned char* user_name, unsigned char* password) {
 
     user* user = init_user(user_name, key);
     printf("You have logged in as %s\n", user_name);
+    sleep(1);
     return user;
 }
 

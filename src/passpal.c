@@ -2,7 +2,7 @@
 
 #define clear() printf("\033[H\033[J")
 
-void print_main_menu() {
+static void print_main_menu() {
     printf("1. Log In\n");
     printf("2. Sign Up\n");
     printf("3. Deactivate Account\n");
@@ -14,7 +14,7 @@ void print_main_menu() {
     printf("Type 'q' to quit the program...\n\n");
 }
 
-bool validate_login_info(unsigned char* user_name, unsigned char* password) {
+static bool validate_login_info(unsigned char* user_name, unsigned char* password) {
     bool valid_usr;
     int tries = 1;
     printf("Enter username: ");
@@ -57,6 +57,10 @@ bool validate_login_info(unsigned char* user_name, unsigned char* password) {
     return true;
 }
 
+static void manage_user(user* user) {
+    // TODO
+}
+
 int main() {
     unsigned char input = 0;
     clear();
@@ -73,17 +77,23 @@ int main() {
             case '1': {
                 if (validate_login_info(user_name, password) == false)
                     break;
-                user* user = log_in(user_name, password);
 
-                // TODO User interface
+                printf("\n");
+                user* user = log_in(user_name, password);
+                clear();
+
+                manage_user(user);
                 break;
             }
             case '2': {
                 if (validate_login_info(user_name, password) == false)
                     break;
-                user* user = sign_up(user_name, password);
 
-                // TODO User interface
+                printf("\n");
+                user* user = sign_up(user_name, password);
+                clear();
+
+                manage_user(user);
                 break;
             }
             case '3': {
