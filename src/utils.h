@@ -42,4 +42,4 @@ bool validate_username(unsigned char* username);
 // Initializations and frees
 pass_list init_pass_list();
 void add_pass(pass_list list, char* password, char* url);
-user* init_user();
+user* init_user(unsigned char* username, unsigned char* key);

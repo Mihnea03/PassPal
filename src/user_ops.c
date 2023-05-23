@@ -12,35 +12,47 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
         fscanf(meta, "%s", name);
         fscanf(meta, "%s", encrypted_pass);
 
-        printf("%s\n", name);
-        printf("%s", encrypted_pass);
-        
         if (strcmp(name, user_name) == 0) {
             ok = true;
             break;
         }
     }
 
+    fclose(meta);
+
     if (ok == false) {
         printf("User with the name %s cannot be found!\n", user_name);
         return NULL;
     }
 
-    FILE* user_file = fopen(name, "rt");
+    char* user_file = malloc(128);
+    strcpy(user_file, ".users/");
+    strcat(user_file, name);
+
+    FILE* usr_file = fopen(user_file, "rt");
 
     char* key = malloc(MAX_PASSWORD);
-    fscanf(user_file, "%s", key);
+    fscanf(usr_file, "%s", key);
+
+    if (strlen(password) != strlen(key)) {
+        printf("The password is not correct!\n");
+        return NULL;
+    }
 
     char* encrypt_curr = encrypt(password, key);
+
+    printf("%s\n%s", encrypted_pass, encrypt_curr);
 
     if (strcmp(encrypt_curr, encrypted_pass)) {
         printf("The password is not correct!\n");
         return NULL;
     }
 
-    user* logged_in = init_user();
+    fclose(usr_file);
 
-    // TODO: complete user info 
+    user* user = init_user(user_name, key);
+    printf("You have logged in as %s\n", user_name);
+    return user;
 }
 
 user* sign_up(unsigned char* user_name, unsigned char* password) {
@@ -59,9 +71,10 @@ user* sign_up(unsigned char* user_name, unsigned char* password) {
     FILE* user_file = fopen(user_file_name, "wt");
     fprintf(user_file, "%s\n", key);
     fclose(user_file);
-    
-    user* user = init_user();
-    
+
+    user* user = init_user(user_name, key);
+    printf("You have logged in as %s\n", user_name);
+    return user;
 }
 
 void deactivate(unsigned char* user_name, unsigned char* password) {

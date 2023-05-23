@@ -14,6 +14,9 @@ static void encrypt_password(unsigned char* password, const char* key, unsigned 
 
         curr = (curr % 95) + 32;
 
+        if (curr == 32)
+            curr++;
+
         encrypted_password[i] = curr;
     }
     encrypted_password[length] = '\0';
@@ -29,7 +32,7 @@ unsigned char* create_unique_key(int length) {
     srand(time(NULL));
     char left = 48, right = 122;
     char interval_len = right - left;
-    unsigned char* key = malloc(length);
+    unsigned char* key = malloc(length + 1);
 
     for (int i = 0; i < length; i++) {
         unsigned char rand_char = rand() % interval_len + left;
