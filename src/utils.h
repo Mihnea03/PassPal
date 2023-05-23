@@ -20,7 +20,7 @@ typedef struct pass {
 
 typedef struct usr {
     unsigned char* user_name;
-    unsigned char* hashed_password;
+    unsigned char* key;
     bool is_active;
     password* passwords;
 } user;
@@ -41,3 +41,4 @@ bool validate_username(unsigned char* username);
 // Initializations and frees
 pass_list init_pass_list();
 void add_pass(pass_list list, char* password, char* url);
+user* init_user();

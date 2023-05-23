@@ -15,3 +15,11 @@ void add_pass(pass_list list, char* password, char* url) {
     node->next = aux;
     list = node;
 }
+
+user* init_user() {
+    user* user = malloc(sizeof(user));
+    user->key = NULL;
+    user->is_active = true;
+    user->passwords = init_pass_list();
+    return user;
+}
