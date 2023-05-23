@@ -57,9 +57,9 @@ user* sign_up(unsigned char* user_name, unsigned char* password) {
     strcat(user_file_name, user_name);
 
     FILE* user_file = fopen(user_file_name, "wt");
-    printf("%s", key);
     fprintf(user_file, "%s\n", key);
-
+    fclose(user_file);
+    
     user* user = init_user();
     
 }
