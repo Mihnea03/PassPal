@@ -77,6 +77,8 @@ int main() {
                 break;
             }
             case '2': {
+                if (validate_login_info(user_name, password) == false)
+                    break;
                 user* user = sign_up(user_name, password);
                 break;
             }

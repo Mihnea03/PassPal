@@ -38,13 +38,30 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
         return NULL;
     }
 
-    user* logged_in = init_user(1);
+    user* logged_in = init_user();
 
     // TODO: complete user info 
 }
 
 user* sign_up(unsigned char* user_name, unsigned char* password) {
+    FILE* meta = fopen(USER_META, "at");
 
+    unsigned char* key = create_unique_key(strlen(password));
+    unsigned char* encrypted_pass = encrypt(password, key);
+
+    fprintf(meta, "%s %s\n", user_name, encrypted_pass);
+    fclose(meta);
+
+    unsigned char* user_file_name = malloc(128);
+    strcpy(user_file_name, ".users/");
+    strcat(user_file_name, user_name);
+
+    FILE* user_file = fopen(user_file_name, "wt");
+    printf("%s", key);
+    fprintf(user_file, "%s\n", key);
+
+    user* user = init_user();
+    
 }
 
 void deactivate(unsigned char* user_name, unsigned char* password) {
