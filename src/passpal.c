@@ -14,6 +14,17 @@ static void print_main_menu() {
     printf("Type 'q' to quit the program...\n\n");
 }
 
+static void print_user_menu() {
+    printf("1. Add password\n");
+    printf("2. Delete password\n");
+    printf("3. See password by URL\n");
+    printf("4. See passwords\n");
+    printf("5. Export passwords\n");
+    printf("6. Clear all passwords\n\n");
+
+    printf("Type 'e' to log out\n\n");
+}   
+
 static bool validate_login_info(unsigned char* user_name, unsigned char* password) {
     bool valid_usr;
     int tries = 1;
@@ -59,6 +70,47 @@ static bool validate_login_info(unsigned char* user_name, unsigned char* passwor
 
 static void manage_user(user* user) {
     // TODO
+    char input = 0;
+
+    while (input != 'e') {
+        print_user_menu();
+        scanf(" %c", &input);
+
+        switch(input) {
+            case '1': {
+                unsigned char* url = malloc(MAX);
+                printf("Enter URL: ");
+                scanf("%s", url);
+
+                unsigned char* pass = malloc(MAX);
+                printf("Enter password: ");
+                scanf("%s", pass);
+
+                char* file_name = malloc(MAX);
+                strcpy(file_name, ".users/");
+                strcat(file_name, user->user_name);
+
+                write_new_user_file(file_name, user, url, pass);
+                break;
+            }
+            case '2': {
+                break;
+            }
+            case '3': {
+                break;
+            }
+            case '4': {
+                break;
+            }
+            case '5': {
+                break;
+            }
+        }
+
+        clear();
+    }
+
+    clear();
 }
 
 int main() {
@@ -81,8 +133,8 @@ int main() {
                 printf("\n");
                 user* user = log_in(user_name, password);
                 clear();
-
-                manage_user(user);
+                if (user)
+                    manage_user(user);
                 break;
             }
             case '2': {
@@ -93,7 +145,8 @@ int main() {
                 user* user = sign_up(user_name, password);
                 clear();
 
-                manage_user(user);
+                if (user)
+                    manage_user(user);
                 break;
             }
             case '3': {

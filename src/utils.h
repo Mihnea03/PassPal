@@ -11,6 +11,7 @@
 #define MIN_USERNAME 4
 #define MAX_PASSWORD 20
 #define MIN_PASSWORD 6
+#define MAX 128
 #define TRIES 5
 
 typedef struct pass {
@@ -41,5 +42,9 @@ bool validate_username(unsigned char* username);
 
 // Initializations and frees
 pass_list init_pass_list();
-void add_pass(pass_list list, char* password, char* url);
+pass_list add_pass(pass_list list, char* password, char* url);
+void delete_pass(pass_list list, char* url);
 user* init_user(unsigned char* username, unsigned char* key);
+
+// Password Manager
+void write_new_user_file(unsigned char* file_name, user* user, unsigned char* url, unsigned char* pass);
