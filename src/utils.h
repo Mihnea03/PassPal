@@ -8,9 +8,9 @@
 #define USER_META ".users/.user_meta"
 
 #define MAX_USERNAME 16
-#define MIN_USERNAME 6
+#define MIN_USERNAME 4
 #define MAX_PASSWORD 20
-#define MIN_PASSWORD 8
+#define MIN_PASSWORD 6
 #define TRIES 5
 
 typedef struct pass {
