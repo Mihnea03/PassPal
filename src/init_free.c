@@ -23,8 +23,35 @@ pass_list add_pass(pass_list list, char* password, char* url) {
     return list;
 }
 
-void delete_pass(pass_list list, char* url) {
-    
+pass_list delete_pass(pass_list list, char* url) {
+    pass_list aux = list;
+
+    if (strcmp(aux->url, url) == 0) {
+        if (aux->next == NULL)
+            printf("Given URL doesn't exist!\n");
+        else
+            list = aux->next;        
+        return list;        
+    }
+
+    while (aux->next) {
+        if (strcmp(aux->next->url, url) == 0) {
+            if (aux->next->next == NULL) {
+                aux->next = NULL;
+                printf("\nPassword succesfully deleted!\n");
+                return list;
+            }
+
+            pass_list aux2 = aux->next;
+            aux->next = aux2->next;
+            printf("\nPassword succesfully deleted!\n");
+            return list;
+        }
+        aux = aux->next;
+    }
+
+    printf("Given URL doesn't exist!\n");
+    return list;
 }
 
 user* init_user(unsigned char* username, unsigned char* key) {
@@ -53,12 +80,9 @@ user* init_user(unsigned char* username, unsigned char* key) {
         fscanf(user_file, "%s", url);
         fscanf(user_file, "%s", pass);
 
-        printf("%s %s\n", url, pass);
-
         user->passwords = add_pass(user->passwords, pass, url);
     }
 
-    printf("%s", user->passwords->saved_pass);
     fclose(user_file);
     return user;
 }

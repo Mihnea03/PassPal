@@ -14,7 +14,9 @@ static void print_main_menu() {
     printf("Type 'q' to quit the program...\n\n");
 }
 
-static void print_user_menu() {
+static void print_user_menu(user* user) {
+    printf("Welcome %s\n\n", user->user_name);
+
     printf("1. Add password\n");
     printf("2. Delete password\n");
     printf("3. See password by URL\n");
@@ -69,11 +71,10 @@ static bool validate_login_info(unsigned char* user_name, unsigned char* passwor
 }
 
 static void manage_user(user* user) {
-    // TODO
     char input = 0;
 
     while (input != 'e') {
-        print_user_menu();
+        print_user_menu(user);
         scanf(" %c", &input);
 
         switch(input) {
@@ -94,15 +95,38 @@ static void manage_user(user* user) {
                 break;
             }
             case '2': {
+                unsigned char* url = malloc(MAX);
+                printf("Enter URL: ");
+                scanf("%s", url);
+
+                char* file_name = malloc(MAX);
+                strcpy(file_name, ".users/");
+                strcat(file_name, user->user_name);
+
+                delete_url(file_name, user, url);
                 break;
             }
             case '3': {
+                unsigned char* url = malloc(MAX);
+                printf("Enter URL: ");
+                scanf("%s", url);
+
+                print_pass_by_url(user, url);
                 break;
             }
             case '4': {
+                print_all_passwords(user);
                 break;
             }
             case '5': {
+                unsigned char* file_name = malloc(MAX);
+                printf("File name: ");
+                scanf("%s", file_name);
+
+                export_passwords(file_name, user);
+                break;
+            }
+            case '6': {
                 break;
             }
         }

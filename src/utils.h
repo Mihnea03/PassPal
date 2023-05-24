@@ -43,8 +43,12 @@ bool validate_username(unsigned char* username);
 // Initializations and frees
 pass_list init_pass_list();
 pass_list add_pass(pass_list list, char* password, char* url);
-void delete_pass(pass_list list, char* url);
+pass_list delete_pass(pass_list list, char* url);
 user* init_user(unsigned char* username, unsigned char* key);
 
 // Password Manager
 void write_new_user_file(unsigned char* file_name, user* user, unsigned char* url, unsigned char* pass);
+void delete_url(unsigned char* file_name, user* user, unsigned char* url);
+void print_pass_by_url(user* user, unsigned char* url);
+void print_all_passwords(user* user);
+void export_passwords(unsigned char* file_name, user* user);

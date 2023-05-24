@@ -92,6 +92,7 @@ user* sign_up(unsigned char* user_name, unsigned char* password) {
     fclose(user_file);
 
     user* user = init_user(user_name, key);
+    user->passwords = NULL;
     printf("You have logged in as %s\n", user_name);
     sleep(1);
     return user;
