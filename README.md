@@ -25,3 +25,9 @@ When first starting the app, the main menu offers 3 different options:
 
 To quit PassPal, press 'q' at any time
 
+
+After logging in, the user has 6 operations they can do:
+* __Add password__: Add an URL and a password to the account
+* __Delete password__: Delete a 
+
+
