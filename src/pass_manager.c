@@ -52,7 +52,7 @@ void print_pass_by_url(user* user, unsigned char* url) {
             printf("\nURL: %s\n", url);
             printf("Password: %s\n", aux->saved_pass);
             
-            sleep(7);
+            sleep(3);
             return;
         }
         aux = aux->next;
@@ -79,7 +79,7 @@ void print_all_passwords(user* user) {
         aux = aux->next;
     }
 
-    sleep(10);
+    sleep(5);
 }
 
 void export_passwords(unsigned char* file_name, user* user) {

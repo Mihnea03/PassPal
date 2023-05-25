@@ -79,7 +79,7 @@ user* init_user(unsigned char* username, unsigned char* key) {
     user->key = malloc(MAX_PASSWORD);
     strcpy(user->key, key);
     user->is_active = true;
-    user->passwords = NULL; // init_pass_list();
+    user->passwords = NULL;
     user->user_name = malloc(MAX_PASSWORD);
     strcpy(user->user_name, username);
 
