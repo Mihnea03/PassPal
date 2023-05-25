@@ -5,6 +5,7 @@ BIN=bin
 USR=.users
 
 echo -e "Initializing project..."
+echo -e ""
 
 if [ -d "$OBJ" ]
 then
@@ -32,4 +33,5 @@ else
     chmod 700 $USR
 fi
 
+echo -e ""
 echo -e "PassPal has been succesfully created! Type 'make && make run' to start PassPal!" 
