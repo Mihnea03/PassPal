@@ -1,5 +1,7 @@
 #include "utils.h"
 
+
+// Initialize password list node
 pass_list init_pass_list() {
     pass_list list = malloc(sizeof(password));
     list->saved_pass = malloc(MAX);
@@ -9,6 +11,7 @@ pass_list init_pass_list() {
     return list;
 }
 
+// Add given password to the list of passwords
 pass_list add_pass(pass_list list, unsigned char* password, unsigned char* url) {
     pass_list node = init_pass_list();
     strcpy(node->saved_pass, password);
@@ -23,6 +26,7 @@ pass_list add_pass(pass_list list, unsigned char* password, unsigned char* url) 
     return list;
 }
 
+// Delete a password by url from a given password list
 pass_list delete_pass(pass_list list, unsigned char* url) {
     pass_list aux = list;
 
@@ -58,6 +62,8 @@ pass_list delete_pass(pass_list list, unsigned char* url) {
     return list;
 }
 
+// Initialize user when logging in or signing up
+// Read all information from user's file and save them in the user variable that is returned
 user* init_user(unsigned char* username, unsigned char* key) {
     user* user = malloc(sizeof(user));
     user->key = malloc(MAX_PASSWORD);
