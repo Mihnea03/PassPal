@@ -14,5 +14,5 @@
 
 ## How it works
 
-&emsp;Every time a user is created, a new, unique private key is assigned and written in the users file. When a user tries to log in, the input is verified by comparing the encrypted password in the metadata file with the resulting new encrypted password resulted from the input and the key of the user.
+&emsp;Every time a user is created, a new, unique private key is assigned and written in the users file. When a user tries to log in, the input is verified by comparing the encrypted password in the metadata file with the resulting new encrypted password resulted from the input and the private key of the user.
 
