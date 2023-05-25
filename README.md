@@ -4,6 +4,13 @@
 
 &emsp;To build the app, you have to run the 'init.sh' script in your terminal. After the script is finished, you can start the app by running the command 'make && make run'. If the app is already created, you can run 'make run' anytime to start it.
 
+## Make commands
+
+* __make__: Builds the app
+* __make run__: Runs the app
+* __make clean__: Deletes all object files, all user files and the binary file
+* __make full_clean__: Deletes all object files, all user files, the binary file and cleans the user metadata file
+
 ## Folder meaning
 
 * __src__: Contains all source code files
