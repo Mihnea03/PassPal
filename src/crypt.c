@@ -1,5 +1,6 @@
 #include "utils.h"
 
+// Encrypt given password using a key and return it through the encrypted_password argument
 static void encrypt_password(unsigned char* password, const char* key, unsigned char* encrypted_password) {
     int length = strlen(password);
 
@@ -22,12 +23,14 @@ static void encrypt_password(unsigned char* password, const char* key, unsigned 
     encrypted_password[length] = '\0';
 }
 
+// Encrypt function for hiding the encryption algorithm to outside files
 unsigned char* encrypt(unsigned char* password, unsigned char* key) {
     unsigned char* encrypted_password = malloc(strlen(password) + 1);
     encrypt_password(password, key, encrypted_password);
     return encrypted_password;
 }
 
+// Create a unique key of given length
 unsigned char* create_unique_key(int length) {
     srand(time(NULL));
     char left = 48, right = 122;
@@ -42,6 +45,8 @@ unsigned char* create_unique_key(int length) {
     return key;
 }
 
+// Validate Password
+// It need to be in the given length interval and contain at least one lowercase, one uppercase letter, one digit and one symbol
 bool validate_pass(unsigned char* password) {
     bool is_valid = false;
     bool lower = false, higher = false, number = false, symbol = false;
@@ -85,6 +90,8 @@ bool validate_pass(unsigned char* password) {
     return false;
 }
 
+// Validate Username
+// It needs to be in the given length interval and contain only digits, lowercase and uppercase letters
 bool validate_username(unsigned char* username) {
     if (strlen(username) < MIN_USERNAME) {
         printf("Your username should be bigger than %d characters!\n", MIN_USERNAME);
