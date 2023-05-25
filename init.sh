@@ -31,3 +31,5 @@ else
     touch $USR/.user_meta
     chmod 700 $USR
 fi
+
+echo -e "PassPal has been succesfully created! Type 'make && make run' to start PassPal!" 
