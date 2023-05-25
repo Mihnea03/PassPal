@@ -4,13 +4,7 @@
 
 static void print_main_menu() {
     printf("1. Log In\n");
-    printf("2. Sign Up\n");
-    printf("3. Deactivate Account\n");
-    printf("4. Reactivate Account\n");
-    printf("5. Delete Account\n");
-
-    printf("\n");
-
+    printf("2. Sign Up\n\n");
     printf("Type 'q' to quit the program...\n\n");
 }
 
@@ -92,6 +86,8 @@ static void manage_user(user* user) {
                 strcat(file_name, user->user_name);
 
                 write_new_user_file(file_name, user, url, pass);
+                free(url);
+                free(pass);
                 break;
             }
             case '2': {
@@ -104,6 +100,8 @@ static void manage_user(user* user) {
                 strcat(file_name, user->user_name);
 
                 delete_url(file_name, user, url);
+                free(url);
+                free(file_name);
                 break;
             }
             case '3': {
@@ -112,6 +110,7 @@ static void manage_user(user* user) {
                 scanf("%s", url);
 
                 print_pass_by_url(user, url);
+                free(url);
                 break;
             }
             case '4': {
@@ -124,16 +123,24 @@ static void manage_user(user* user) {
                 scanf("%s", file_name);
 
                 export_passwords(file_name, user);
+                free(file_name);
                 break;
             }
             case '6': {
+                char* file_name = malloc(MAX);
+                strcpy(file_name, ".users/");
+                strcat(file_name, user->user_name);
+
+                clear_all_urls(file_name, user);
+                free(file_name);
                 break;
             }
         }
-
         clear();
     }
-
+    printf("You have logged out succesfully!\n");
+    user = NULL;
+    sleep(1);
     clear();
 }
 
@@ -144,7 +151,6 @@ int main() {
     while (input != 'q') {
         print_main_menu();
         scanf(" %c", &input);
-
 
         unsigned char* user_name = malloc(MAX_USERNAME);
         unsigned char* password = malloc(MAX_PASSWORD);
@@ -173,19 +179,10 @@ int main() {
                     manage_user(user);
                 break;
             }
-            case '3': {
-                deactivate(user_name, password);
-                break;
-            }
-            case '4': {
-                reactivate(user_name, password);
-                break;
-            }
-            case '5': {
-                delete(user_name, password);
-                break;
-            }
         }
+        clear();
+        free(user_name);
+        free(password);
     }
     return 0;
 }

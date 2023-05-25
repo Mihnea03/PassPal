@@ -30,8 +30,6 @@ typedef struct usr {
 // User Operations
 user* log_in(unsigned char* user_name, unsigned char* password);
 user* sign_up(unsigned char* user_name, unsigned char* password);
-void deactivate(unsigned char* user_name, unsigned char* password);
-void reactivate(unsigned char* user_name, unsigned char* password);
 void delete(unsigned char* user_name, unsigned char* password);
 
 // Crypting
@@ -42,9 +40,11 @@ bool validate_username(unsigned char* username);
 
 // Initializations and frees
 pass_list init_pass_list();
-pass_list add_pass(pass_list list, char* password, char* url);
-pass_list delete_pass(pass_list list, char* url);
+pass_list add_pass(pass_list list, unsigned char* password, unsigned char* url);
+pass_list delete_pass(pass_list list, unsigned char* url);
 user* init_user(unsigned char* username, unsigned char* key);
+void free_list(pass_list list);
+void free_user(user* user);
 
 // Password Manager
 void write_new_user_file(unsigned char* file_name, user* user, unsigned char* url, unsigned char* pass);
@@ -52,3 +52,4 @@ void delete_url(unsigned char* file_name, user* user, unsigned char* url);
 void print_pass_by_url(user* user, unsigned char* url);
 void print_all_passwords(user* user);
 void export_passwords(unsigned char* file_name, user* user);
+void clear_all_urls(char* file_name, user* user);

@@ -54,6 +54,7 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
     user* user = init_user(user_name, key);
     printf("You have logged in as %s\n", user_name);
     sleep(1);
+
     return user;
 }
 
@@ -92,18 +93,9 @@ user* sign_up(unsigned char* user_name, unsigned char* password) {
     fclose(user_file);
 
     user* user = init_user(user_name, key);
-    user->passwords = NULL;
     printf("You have logged in as %s\n", user_name);
     sleep(1);
     return user;
-}
-
-void deactivate(unsigned char* user_name, unsigned char* password) {
-
-}
-
-void reactivate(unsigned char* user_name, unsigned char* password) {
-
 }
 
 void delete(unsigned char* user_name, unsigned char* password) {

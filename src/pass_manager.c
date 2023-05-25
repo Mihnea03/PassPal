@@ -38,6 +38,7 @@ void delete_url(unsigned char* file_name, user* user, unsigned char* url) {
         fprintf(in, "%s %s\n", aux->url, aux->saved_pass);
         aux = aux->next;
     }
+
     sleep(1);
 
     fclose(in);
@@ -83,6 +84,8 @@ void print_all_passwords(user* user) {
 
 void export_passwords(unsigned char* file_name, user* user) {
 
+    strcat(file_name, ".out");
+
     if (user->passwords == NULL) {
         printf("No passwords are saved on this account!\n");
         sleep(1);
@@ -91,6 +94,8 @@ void export_passwords(unsigned char* file_name, user* user) {
 
     FILE* export = fopen(file_name, "wt");
     pass_list aux = user->passwords;
+
+    fprintf(export, "User: %s\n\n", user->user_name);
 
     while(aux) {
         if (strcmp(aux->url, " ")) {
@@ -101,5 +106,20 @@ void export_passwords(unsigned char* file_name, user* user) {
         printf("\nFile exported succesfully!");
     }
     fclose(export);
+    sleep(1);
+}
+
+void clear_all_urls(char* file_name, user* user) {
+    FILE* user_file = fopen(file_name, "wt");
+    fprintf(user_file, "%s\n", user->key);
+    fclose(user_file);
+
+    while(user->passwords) {
+        pass_list aux = user->passwords;
+        user->passwords = user->passwords->next;
+        free(aux);
+    }
+
+    printf("All passwords have been cleared succesfully!\n");
     sleep(1);
 }
