@@ -22,7 +22,7 @@ static void print_user_menu(user* user) {
     printf("5. Export passwords\n");
     printf("6. Clear all passwords\n\n");
 
-    printf("Type 'e' to log out\n\n");
+    printf("Type 'e' to log out...\n\n");
 }   
 
 // Validating user input to verify if they comply with the given standards 
