@@ -16,3 +16,12 @@
 
 &emsp;Every time a user is created, a new, unique private key is assigned and written in the users file. When a user tries to log in, the input is verified by comparing the encrypted password in the metadata file with the resulting new encrypted password created from the input and the private key of the user.
 
+## Available commands
+
+When first starting the app, the main menu offers 3 different options:
+* __Log In__: Input username and password to log in and gain access to all passwords of the user
+* __Sign Up__: Create a new account and log in automatically
+* __Delete Account__: Delete account given as input only if the input information is correct
+
+To quit PassPal, press 'q' at any time
+
