@@ -12,3 +12,7 @@
 * __.users__: All user files will be created in this folder
 * __.user_meta__: File that contains required metadata for every user: the username and the encrypted password
 
+## How it works
+
+&emsp;Every time a user is created, a new, unique private key is assigned and written in the users file. When a user tries to log in, the input is verified by comparing the encrypted password in the metadata file with the resulting new encrypted password from the input and the key of the user.
+
