@@ -28,6 +28,8 @@ To quit PassPal, press 'q' at any time
 
 After logging in, the user has 6 operations they can do:
 * __Add password__: Add an URL and a password to the account
-* __Delete password__: Delete a 
+* __Delete password__: Delete an URL and its password from the account
+* __See password by URL__: Print a password by its URL to the command line
+* __See passwords__: Print all passwords to the command line
 
 
