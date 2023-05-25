@@ -33,4 +33,6 @@ After logging in, the user has 6 operations they can do:
 * __Export passwords__: Print all passwords to a given file
 * __Clear all passwords__: Delete all URLs and passwords from the account
 
+To log out, press 'e' at any time
+
 
