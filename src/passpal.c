@@ -2,6 +2,7 @@
 
 #define clear() printf("\033[H\033[J")
 
+// Main menu of the app
 static void print_main_menu() {
     printf("1. Log In\n");
     printf("2. Sign Up\n");
@@ -10,6 +11,7 @@ static void print_main_menu() {
     printf("Type 'q' to quit the program...\n\n");
 }
 
+// User menu of the app
 static void print_user_menu(user* user) {
     printf("Welcome %s\n\n", user->user_name);
 
@@ -23,6 +25,7 @@ static void print_user_menu(user* user) {
     printf("Type 'e' to log out\n\n");
 }   
 
+// Validating user input to verify if they comply with the given standards 
 static bool validate_login_info(unsigned char* user_name, unsigned char* password) {
     bool valid_usr;
     int tries = 1;
@@ -66,6 +69,7 @@ static bool validate_login_info(unsigned char* user_name, unsigned char* passwor
     return true;
 }
 
+// User menu functionality
 static void manage_user(user* user) {
     char input = 0;
 
@@ -147,6 +151,8 @@ static void manage_user(user* user) {
 }
 
 int main() {
+    // Main menu functionality
+    
     unsigned char input = 0;
     clear();
 
