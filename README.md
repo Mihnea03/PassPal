@@ -31,5 +31,7 @@ After logging in, the user has 6 operations they can do:
 * __Delete password__: Delete an URL and its password from the account
 * __See password by URL__: Print a password by its URL to the command line
 * __See passwords__: Print all passwords to the command line
+* __Export passwords__: Print all passwords to a given file
+* __Clear all passwords__: Delete all URLs and passwords from the account
 
 
