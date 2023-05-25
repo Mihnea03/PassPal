@@ -6,3 +6,9 @@
 
 ## Folder meaning
 
+* src: Contains all source code files
+* bin: Contains the passpal binary executable
+* obj: Contains all object files
+* .users: All user files will be created in this folder
+* .user_meta: File that contains required metadata for every user: the username and the encrypted password
+
