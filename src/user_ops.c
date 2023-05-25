@@ -102,5 +102,68 @@ user* sign_up(unsigned char* user_name, unsigned char* password) {
 }
 
 void delete(unsigned char* user_name, unsigned char* password) {
+    FILE* meta = fopen(USER_META, "rt");
+    
+    pass_list users = NULL;
 
+    char* name = malloc(MAX_USERNAME);
+    char* encrypted_pass = malloc(MAX_PASSWORD);
+
+    bool ok = false;
+
+    while (!feof(meta)) {
+        fscanf(meta, "%s", name);
+        fscanf(meta, "%s", encrypted_pass);
+
+        if (strcmp(name, user_name) == 0) {
+            ok = true;
+        } else {
+            add_pass(users, name, encrypted_pass);
+        }
+    }
+
+    fclose(meta);
+
+    if (ok == false) {
+        printf("User with the name %s cannot be found!\n", user_name);
+        sleep(1);
+        return;
+    }
+
+    char* user_file = malloc(128);
+    strcpy(user_file, ".users/");
+    strcat(user_file, name);
+
+    FILE* usr_file = fopen(user_file, "rt");
+
+    char* key = malloc(MAX_PASSWORD);
+    fscanf(usr_file, "%s", key);
+
+    if (strlen(password) != strlen(key)) {
+        printf("The password is not correct!\n");
+        sleep(1);
+        return;
+    }
+
+    char* encrypt_curr = encrypt(password, key);
+
+    if (strcmp(encrypt_curr, encrypted_pass)) {
+        printf("The password is not correct!\n");
+        sleep(1);
+        return;
+    }
+
+    fclose(usr_file);
+
+    FILE* meta_new = fopen(USER_META, "wt");
+
+    while (users) {
+        fprintf(meta_new, "%s %s\n", users->saved_pass, users->url);
+        users = users->next;    
+    }
+
+    remove(user_file);
+    fclose(meta_new);
+    printf("\nUser succesfully deleted!\n");
+    sleep(1);
 }

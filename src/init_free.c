@@ -9,16 +9,6 @@ pass_list init_pass_list() {
     return list;
 }
 
-void free_list(pass_list list) {
-    while(list) {
-        pass_list aux = list;
-        list = list->next;
-        free(aux->saved_pass);
-        free(aux->url);
-        free(aux);
-    }
-}
-
 pass_list add_pass(pass_list list, unsigned char* password, unsigned char* url) {
     pass_list node = init_pass_list();
     strcpy(node->saved_pass, password);
@@ -66,12 +56,6 @@ pass_list delete_pass(pass_list list, unsigned char* url) {
 
     printf("Given URL doesn't exist!\n");
     return list;
-}
-
-void free_user(user* user) {
-    // free(user->key);
-    // free(user->user_name);
-    free_list(user->passwords);
 }
 
 user* init_user(unsigned char* username, unsigned char* key) {

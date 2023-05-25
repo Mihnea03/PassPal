@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <time.h>
+#include <sys/stat.h>
 
 #define USER_META ".users/.user_meta"
 
@@ -43,8 +44,6 @@ pass_list init_pass_list();
 pass_list add_pass(pass_list list, unsigned char* password, unsigned char* url);
 pass_list delete_pass(pass_list list, unsigned char* url);
 user* init_user(unsigned char* username, unsigned char* key);
-void free_list(pass_list list);
-void free_user(user* user);
 
 // Password Manager
 void write_new_user_file(unsigned char* file_name, user* user, unsigned char* url, unsigned char* pass);

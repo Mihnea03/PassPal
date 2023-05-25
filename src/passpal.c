@@ -4,7 +4,9 @@
 
 static void print_main_menu() {
     printf("1. Log In\n");
-    printf("2. Sign Up\n\n");
+    printf("2. Sign Up\n");
+    printf("3. Delete account\n\n");
+
     printf("Type 'q' to quit the program...\n\n");
 }
 
@@ -179,10 +181,16 @@ int main() {
                     manage_user(user);
                 break;
             }
+            case '3': {
+                if (validate_login_info(user_name, password) == false)
+                    break;
+
+                printf("\n");
+                delete(user_name, password);
+                clear();
+            }
         }
         clear();
-        free(user_name);
-        free(password);
     }
     return 0;
 }
