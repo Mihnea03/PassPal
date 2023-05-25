@@ -15,12 +15,14 @@
 #define MAX 128
 #define TRIES 5
 
+// Password struct
 typedef struct pass {
     unsigned char* url;
     unsigned char* saved_pass;
     struct pass* next;
 } password, *pass_list;
 
+// User struct
 typedef struct usr {
     unsigned char* user_name;
     unsigned char* key;
@@ -39,7 +41,7 @@ bool validate_pass(unsigned char* password);
 unsigned char* create_unique_key(int length);
 bool validate_username(unsigned char* username);
 
-// Initializations and frees
+// Initializations and password list operations
 pass_list init_pass_list();
 pass_list add_pass(pass_list list, unsigned char* password, unsigned char* url);
 pass_list delete_pass(pass_list list, unsigned char* url);
