@@ -1,5 +1,6 @@
 #include "utils.h"
 
+// Log in user
 user* log_in(unsigned char* user_name, unsigned char* password) {
     FILE* meta = fopen(USER_META, "rt");
     
@@ -60,6 +61,7 @@ user* log_in(unsigned char* user_name, unsigned char* password) {
     return user;
 }
 
+// Create account for user
 user* sign_up(unsigned char* user_name, unsigned char* password) {
     FILE* meta = fopen(USER_META, "rt");
 
@@ -101,6 +103,7 @@ user* sign_up(unsigned char* user_name, unsigned char* password) {
     return user;
 }
 
+// Delete account of the user
 void delete(unsigned char* user_name, unsigned char* password) {
     FILE* meta = fopen(USER_META, "rt");
     
