@@ -1,5 +1,6 @@
 #include "utils.h"
 
+// Add a new password to the given user list and update the user file 
 void write_new_user_file(unsigned char* file_name, user* user, unsigned char* url, unsigned char* pass) {
     FILE* in = fopen(file_name, "wt");
 
@@ -19,6 +20,7 @@ void write_new_user_file(unsigned char* file_name, user* user, unsigned char* ur
     fclose(in);
 }
 
+// Delete a password from the given user list and update the user file
 void delete_url(unsigned char* file_name, user* user, unsigned char* url) {
     user->passwords = delete_pass(user->passwords, url);
 
@@ -44,6 +46,7 @@ void delete_url(unsigned char* file_name, user* user, unsigned char* url) {
     fclose(in);
 }
 
+// Print a password of a user using a given URL
 void print_pass_by_url(user* user, unsigned char* url) {
     pass_list aux = user->passwords;
     
@@ -62,6 +65,7 @@ void print_pass_by_url(user* user, unsigned char* url) {
     sleep(1);
 }
 
+// Print all of the user's passwords
 void print_all_passwords(user* user) {
     if (user->passwords == NULL) {
         printf("No passwords are saved on this account!\n");
@@ -82,6 +86,7 @@ void print_all_passwords(user* user) {
     sleep(5);
 }
 
+// Export all user passwords to a given file
 void export_passwords(unsigned char* file_name, user* user) {
 
     strcat(file_name, ".out");
@@ -109,6 +114,7 @@ void export_passwords(unsigned char* file_name, user* user) {
     sleep(1);
 }
 
+// Delete all passwords of a user and update the user file
 void clear_all_urls(char* file_name, user* user) {
     FILE* user_file = fopen(file_name, "wt");
     fprintf(user_file, "%s\n", user->key);
